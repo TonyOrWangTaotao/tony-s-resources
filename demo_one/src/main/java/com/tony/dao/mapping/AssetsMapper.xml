@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tony.dao.AssetsMapper">
+	<resultMap id="BaseResultMap" type="com.tony.domain.Assets">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+		<result column="asset_name" jdbcType="VARCHAR" property="assetName" />
+		<result column="model" jdbcType="VARCHAR" property="model" />
+		<result column="asset_number" jdbcType="VARCHAR" property="assetNumber" />
+		<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+		<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+		<result column="read_flag" jdbcType="TINYINT" property="readFlag" />
+	</resultMap>
+	<select id="queryAssetsList" resultType="com.tony.domain.Assets">
+		  SELECT * FROM assets
+	</select>
+
+</mapper>
