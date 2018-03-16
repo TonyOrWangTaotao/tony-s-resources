@@ -31,4 +31,5 @@ public interface BaseService<T> {
 	int deleteBy(T entity);
 
 	List<T> selectByGaze(Object... ps);
+
 }
