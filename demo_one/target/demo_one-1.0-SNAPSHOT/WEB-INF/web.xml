@@ -97,6 +97,7 @@
   <!--设置spring的配置文件,在启动项目的时候加载spring的配置文件-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
+    <!--加载多个spring配置文件-->
     <param-value>
       classpath*:/applicationContext*.xml,
     </param-value>
@@ -110,7 +111,7 @@
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
-  <!-- Filter 定义  -->
+  <!-- Filter 定义 过滤器将一个名字与一个实现javax.servlet.Filter接口的类相关联-->
   <!-- Character Encoding filter -->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -129,19 +130,33 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <!-- Spring MVC Servlet -->
+  <!--前端控制器-->
   <servlet>
     <servlet-name>springmvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
+      <!-- ContextconfigLocation配置springmvc加载的配置文件 适配器、处理映射器等-->
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath*:/spring-mvc.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <servlet>
+    <display-name>UserServlet</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.servlet.UserSevlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/userServlet</url-pattern>
+  </servlet-mapping>
   <!--拦截设置-->
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>
     <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
+    <!-- 1、.action访问以.action结尾的  由DispatcherServlet进行解析
+           2、/,所有访问都由DispatcherServlet进行解析
+       -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <!-- 用于单点退出 -->
