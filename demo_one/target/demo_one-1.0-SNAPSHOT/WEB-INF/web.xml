@@ -150,6 +150,15 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/userServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>ThreadSafeServlet</display-name>
+    <servlet-name>ThreadSafeServlet</servlet-name>
+    <servlet-class>com.servlet.ThreadSafeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThreadSafeServlet</servlet-name>
+    <url-pattern>/threadSafeServlet</url-pattern>
+  </servlet-mapping>
   <!--拦截设置-->
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>

@@ -16,9 +16,15 @@ import java.io.IOException;
  **/
 public class UserSevlet extends HttpServlet{
 
-    private static final long serialVersionUID = 1L;
+    private String unsafe;
+    @Override
+    public void init() throws ServletException {
+        super.init();
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        unsafe=Thread.currentThread().getName();
+        System.out.println(unsafe);
         System.out.println("++++++++++++++测试servlet+++++++++++++++++++GET");
         doPost(req,resp);
     }
